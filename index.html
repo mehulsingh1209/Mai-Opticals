@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Mai Optical Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary: #1e40af;
+            --success: #10b981;
+            --success-hover: #059669;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --medium: #e2e8f0;
+            --dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .logo h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--medium);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .eye-section {
+            background: linear-gradient(to bottom, var(--light), #fff);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--medium);
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .eye-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .eye-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .eye-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .payment-section {
+            background-color: #fcfcff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--medium);
+            position: relative;
+        }
+
+        .payment-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .total-amount {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .collected-amount {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .remaining-amount {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        button {
+            background: linear-gradient(to right, var(--success), var(--success-hover));
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(to right, var(--success-hover), var(--success));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .button-icon {
+            font-size: 1.2rem;
+        }
+
+        .success-message {
+            display: none;
+            background-color: var(--success);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-weight: 500;
+            animation: fadeIn 0.5s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--medium);
+        }
+
+        .section-title {
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 1px solid var(--medium);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .form-progress {
+            display: flex;
+            margin: 2rem 0;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--medium);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .step-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-number {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .progress-step.active .step-title {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 16px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background-color: var(--medium);
+            z-index: 0;
+        }
+
+        .progress-line-active {
+            position: absolute;
+            top: 16px;
+            left: 10%;
+            width: 0%;
+            height: 3px;
+            background-color: var(--primary);
+            z-index: 0;
+            transition: width 0.5s ease;
+        }
+
+        .form-page {
+            display: none;
+        }
+
+        .form-page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .form-nav-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .prev-button {
+            background-color: var(--medium);
+            color: var(--dark);
+            border: none;
+        }
+
+        .prev-button:hover {
+            background-color: #d1d5db;
+        }
+
+        .next-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .next-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .preview-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--medium);
+            padding-bottom: 0.5rem;
+        }
+
+        .preview-section {
+            margin-bottom: 1rem;
+        }
+
+        .preview-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .preview-data {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .preview-item {
+            font-size: 0.9rem;
+        }
+
+        .preview-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .preview-value {
+            font-weight: 600;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+            color: var(--text-muted);
+        }
+
+        input.with-icon {
+            padding-right: 2.5rem;
+        }
+
+        .required-mark::after {
+            content: '*';
+            color: var(--danger);
+            margin-left: 2px;
+        }
+
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--medium);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px var(--primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .toggle-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .bill-container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .bill-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+        }
+
+        .bill-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #2563eb;
+        }
+
+        .bill-header p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .bill-date {
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .bill-patient {
+            margin-bottom: 15px;
+        }
+
+        .bill-patient h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .bill-patient-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .bill-section {
+            margin-bottom: 15px;
+        }
+
+        .bill-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .bill-items {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .bill-items th, .bill-items td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .bill-items th {
+            background-color: #f5f5f5;
+        }
+
+        .bill-footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 2px dashed #000;
+            padding-top: 10px;
+        }
+
+        .bill-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .print-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .print-button:hover {
+            background: #1e40af;
+        }
+
+        .button-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading .button-text {
+            display: none;
+        }
+
+        .loading .button-spinner {
+            display: inline-block;
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+        }
+
+        .invalid {
+            border-color: var(--danger) !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            input, select, textarea {
+                font-size: 16px;
+            }
+            
+            button, .form-nav-button {
+                padding: 1rem;
+                min-height: 50px;
+            }
+            
+            .form-progress {
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+            }
+            
+            .progress-line {
+                display: none;
+            }
+            
+            .progress-step {
+                margin-bottom: 1rem;
+                text-align: left;
+                width: 100%;
+            }
+
+            .preview-data {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .bill-container, .bill-container * {
+                visibility: visible;
+            }
+            
+            .bill-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+            }
+            
+            .bill-actions {
+                display: none;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+                color: #f9fafb;
+            }
+            
+            .container {
+                background: #1f2937;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            
+            .logo h2 {
+                color: var(--primary-light);
+            }
+            
+            input, select, textarea {
+                background-color: #374151;
+                border-color: #4b5563;
+                color: #f9fafb;
+            }
+            
+            .eye-section, .payment-section {
+                background: #283344;
+                border-color: #4b5563;
+            }
+            
+            label {
+                color: #e5e7eb;
+            }
+            
+            .section-title, .preview-label {
+                color: #d1d5db;
+            }
+            
+            .preview-card {
+                background-color: #283344;
+            }
+
+            .form-hint {
+                color: #9ca3af;
+            }
+            
+            .bill-container {
+                background: #1f2937;
+                color: #f9fafb;
+            }
+            
+            .bill-items th {
+                background-color: #283344;
+            }
+            
+            .bill-items th, .bill-items td {
+                border-bottom: 1px solid #4b5563;
+            }
+            
+            .bill-header, .bill-footer {
+                border-color: #4b5563;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h2>MAI OPTICAL CENTER</h2>
+            <p>SERVING OPTICALLY SINCE 1983</p>
+            <div class="contact-info">
+                <p>JEEWON P. SHRESTHA</p>
+                <p>PROPRIETOR</p>
+                <p>ALAKHIYA ROAD, BIRGUNJ, NEPAL</p>
+                <p>+977-9851059968</p>
+                <p>maiopticalcenter@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="form-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5">
+            <div class="progress-line"></div>
+            <div class="progress-line-active" id="progressLine"></div>
+            
+            <div class="progress-step active" data-step="1" role="progress-step">
+                <div class="step-number">1</div>
+                <div class="step-title">Patient Info</div>
+            </div>
+            
+            <div class="progress-step" data-step="2" role="progress-step">
+                <div class="step-number">2</div>
+                <div class="step-title">Prescription</div>
+            </div>
+            
+            <div class="progress-step" data-step="3" role="progress-step">
+                <div class="step-number">3</div>
+                <div class="step-title">Lens & Frame</div>
+            </div>
+            
+            <div class="progress-step" data-step="4" role="progress-step">
+                <div class="step-number">4</div>
+                <div class="step-title">Payment</div>
+            </div>
+            
+            <div class="progress-step" data-step="5" role="progress-step">
+                <div class="step-number">5</div>
+                <div class="step-title">Review</div>
+            </div>
+        </div>
+        
+        <form id="prescriptionForm" novalidate>
+            <!-- Page 1: Patient Information -->
+            <div class="form-page active" id="page1" role="tabpanel" aria-labelledby="step1">
+                <div class="section-title">Patient Information</div>
+                
+                <div class="form-group">
+                    <label for="patientName" class="required-mark">Patient Name</label>
+                    <div class="input-group">
+                        <input type="text" id="patientName" class="with-icon" required>
+                        <span class="input-icon"><i class="fas fa-user"></i></span>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="age" class="required-mark">Age</label>
+                        <input type="number" id="age" min="1" max="120" required>
+                    </div>
+                    
+                    <div class="form-group" style="flex: 2;">
+                        <label for="phone" class="required-mark">Phone Number</label>
+                        <div class="input-group">
+                            <input type="tel" id="phone" class="with-icon" required>
+                            <span class="input-icon"><i class="fas fa-mobile-alt"></i></span>
+                        </div>
+                        <div class="form-hint">Will be used to send prescription SMS</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address (Optional)</label>
+                    <textarea id="address" rows="2" placeholder="Patient's address"></textarea>
+                </div>
+                
+                <div class="toggle-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="returningCustomer">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Returning Customer</span>
+                </div>
+                
+                <div class="form-navigation">
+                    <div></div>
+                    <button type="button" class="form-nav-button next-button" data-next="2">Next: Prescription Details</button>
+                </div>
+            </div>
+            
+            <!-- Page 2: Prescription Details -->
+            <div class="form-page" id="page2" role="tabpanel" aria-labelledby="step2">
+                <div class="section-title">Prescription Details</div>
+                
+                <div class="eye-section">
+                    <div class="eye-title">Right Eye (RE) Prescription</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="reSphere">Sphere (SPH)</label>
+                            <input type="text" id="reSphere" placeholder="-2.50">
+                        </div>
+                        <div class="form-group">
+                            <label for="reCylinder">Cylinder (CYL)</label>
+                            <input type="text" id="reCylinder" placeholder="-1.25">
+                        </div>
+                        <div class="form-group">
+                            <label for="reAxis">Axis</label>
+                            <input type="text" id="reAxis" placeholder="180">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rePd">PD (mm)</label>
+                        <input type="text" id="rePd" placeholder="Pupillary Distance">
+                        <div class="form-hint">Measured in millimeters</div>
+                    </div>
+                </div>
+                
+                <div class="eye-section">
+                    <div class="eye-title">Left Eye (LE) Prescription</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="leSphere">Sphere (SPH)</label>
+                            <input type="text" id="leSphere" placeholder="-2.50">
+                        </div>
+                        <div class="form-group">
+                            <label for="leCylinder">Cylinder (CYL)</label>
+                            <input type="text" id="leCylinder" placeholder="-1.25">
+                        </div>
+                        <div class="form-group">
+                            <label for="leAxis">Axis</label>
+                            <input type="text" id="leAxis" placeholder="180">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lePd">PD (mm)</label>
+                        <input type="text" id="lePd" placeholder="Pupillary Distance">
+                        <div class="form-hint">Measured in millimeters</div>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="form-nav-button prev-button" data-prev="1">Previous</button>
+                    <button type="button" class="form-nav-button next-button" data-next="3">Next: Lens & Frame</button>
+                </div>
+            </div>
+            
+            <!-- Page 3: Lens & Frame Selection -->
+            <div class="form-page" id="page3" role="tabpanel" aria-labelledby="step3">
+                <div class="section-title">Lens & Frame Selection</div>
+                
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="lensType" class="required-mark">Lens Type</label>
+                        <select id="lensType" required>
+                            <option value="">Select</option>
+                            <option value="Single Vision">Single Vision</option>
+                            <option value="Bifocal">Bifocal</option>
+                            <option value="Progressive">Progressive</option>
+                            <option value="Transition">Transition</option>
+                            <option value="Blue Cut">Blue Cut</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label for="lensQuality">Lens Quality</label>
+                        <select id="lensQuality">
+                            <option value="">Select</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Premium">Premium</option>
+                            <option value="Ultra Premium">Ultra Premium</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="frameType" class="required-mark">Frame Type</label>
+                        <select id="frameType" required>
+                            <option value="">Select</option>
+                            <option value="Metal">Metal</option>
+                            <option value="Plastic">Plastic</option>
+                            <option value="Rimless">Rimless</option>
+                            <option value="Semi-Rimless">Semi-Rimless</option>
+                            <option value="Custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="flex: 1;">
+                        <label for="frameModel">Frame Model/Color</label>
+                        <input type="text" id="frameModel" placeholder="e.g. Black Rectangle">
+                    </div>
+                </div>
+                
+                <div class="toggle-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="antiReflectiveCoating">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Add Anti-Reflective Coating</span>
+                </div>
+                
+                <div class="toggle-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="uvProtection">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Add UV Protection</span>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="form-nav-button prev-button" data-prev="2">Previous</button>
+                    <button type="button" class="form-nav-button next-button" data-next="4">Next: Payment</button>
+                </div>
+            </div>
+            
+            <!-- Page 4: Payment Information -->
+            <div class="form-page" id="page4" role="tabpanel" aria-labelledby="step4">
+                <div class="section-title">Payment Information</div>
+                
+                <div class="payment-section">
+                    <div class="eye-title">Payment Details</div>
+                    
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="totalAmount">Total Amount (NPR)</label>
+                            <div class="input-group">
+                                <input type="number" id="totalAmount" placeholder="Enter total amount" min="0" step="100" class="with-icon">
+                                <span class="input-icon"><i class="fas fa-money-bill-wave"></i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <label for="collectedAmount">Collected Amount (NPR)</label>
+                            <div class="input-group">
+                                <input type="number" id="collectedAmount" placeholder="Amount received" min="0" step="100" class="with-icon">
+                                <span class="input-icon"><i class="fas fa-hand-holding-usd"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="paymentDisplay" style="display: none;">
+                        <div class="payment-display total-amount">
+                            <span>Total:</span>
+                            <span id="displayTotal">NPR 0</span>
+                        </div>
+                        <div class="payment-display collected-amount">
+                            <span>Collected:</span>
+                            <span id="displayCollected">NPR 0</span>
+                        </div>
+                        <div class="payment-display remaining-amount">
+                            <span>Remaining:</span>
+                            <span id="displayRemaining">NPR 0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod">
+                        <option value="Cash">Cash</option>
+                        <option value="Card">Card</option>
+                        <option value="Mobile Payment">Mobile Payment</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deliveryDate">Expected Delivery Date</label>
+                    <input type="date" id="deliveryDate">
+                    <div class="form-hint">When the glasses will be ready for pickup</div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="form-nav-button prev-button" data-prev="3">Previous</button>
+                    <button type="button" class="form-nav-button next-button" data-next="5">Next: Review & Confirm</button>
+                </div>
+            </div>
+            
+            <!-- Page 5: Review & Confirm -->
+            <div class="form-page" id="page5" role="tabpanel" aria-labelledby="step5">
+                <div class="section-title">Review & Confirm</div>
+                
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h3>Patient Information</h3>
+                        <button type="button" class="form-nav-button prev-button" data-prev="1" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Edit</button>
+                    </div>
+                    <div class="preview-data">
+                        <div class="preview-item">
+                            <span class="preview-label">Name:</span>
+                            <span class="preview-value" id="previewName">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Age:</span>
+                            <span class="preview-value" id="previewAge">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Phone:</span>
+                            <span class="preview-value" id="previewPhone">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Address:</span>
+                            <span class="preview-value" id="previewAddress">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h3>Prescription Details</h3>
+                        <button type="button" class="form-nav-button prev-button" data-prev="2" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Edit</button>
+                    </div>
+                    
+                    <div class="preview-section">
+                        <div class="preview-title">Right Eye (RE)</div>
+                        <div class="preview-data">
+                            <div class="preview-item">
+                                <span class="preview-label">Sphere:</span>
+                                <span class="preview-value" id="previewReSphere">-</span>
+                            </div>
+                            <div class="preview-item">
+                                <span class="preview-label">Cylinder:</span>
+                                <span class="preview-value" id="previewReCylinder">-</span>
+                            </div>
+                            <div class="preview-item">
+                                <span class="preview-label">Axis:</span>
+                                <span class="preview-value" id="previewReAxis">-</span>
+                            </div>
+                            <div class="preview-item">
+                                <span class="preview-label">PD:</span>
+                                <span class="preview-value" id="previewRePd">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-section">
+                        <div class="preview-title">Left Eye (LE)</div>
+                        <div class="preview-data">
+                            <div class="preview-item">
+                                <span class="preview-label">Sphere:</span>
+                                <span class="preview-value" id="previewLeSphere">-</span>
+                            </div>
+                            <div class="preview-item">
+                                <span class="preview-label">Cylinder:</span>
+                                <span class="preview-value" id="previewLeCylinder">-</span>
+                            </div>
+                            <div class="preview-item">
+                                <span class="preview-label">Axis:</span>
+                                <span class="preview-value" id="previewLeAxis">-</span>
+                            </div>
+                            <div class="preview-item">
+                                <span class="preview-label">PD:</span>
+                                <span class="preview-value" id="previewLePd">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h3>Lens & Frame</h3>
+                        <button type="button" class="form-nav-button prev-button" data-prev="3" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Edit</button>
+                    </div>
+                    <div class="preview-data">
+                        <div class="preview-item">
+                            <span class="preview-label">Lens Type:</span>
+                            <span class="preview-value" id="previewLensType">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Lens Quality:</span>
+                            <span class="preview-value" id="previewLensQuality">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Frame Type:</span>
+                            <span class="preview-value" id="previewFrameType">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Frame Model:</span>
+                            <span class="preview-value" id="previewFrameModel">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Anti-Reflective:</span>
+                            <span class="preview-value" id="previewAntiReflective">No</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">UV Protection:</span>
+                            <span class="preview-value" id="previewUvProtection">No</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <h3>Payment Information</h3>
+                        <button type="button" class="form-nav-button prev-button" data-prev="4" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Edit</button>
+                    </div>
+                    <div class="preview-data">
+                        <div class="preview-item">
+                            <span class="preview-label">Total Amount:</span>
+                            <span class="preview-value" id="previewTotal">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Collected Amount:</span>
+                            <span class="preview-value" id="previewCollected">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Remaining Amount:</span>
+                            <span class="preview-value" id="previewRemaining">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Payment Method:</span>
+                            <span class="preview-value" id="previewPaymentMethod">-</span>
+                        </div>
+                        <div class="preview-item">
+                            <span class="preview-label">Delivery Date:</span>
+                            <span class="preview-value" id="previewDeliveryDate">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <textarea id="notes" rows="3" placeholder="Any special instructions or notes"></textarea>
+                </div>
+                
+                <div class="toggle-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="smsConfirmation" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Send confirmation SMS to patient</span>
+                </div>
+                
+                <button type="submit" id="submitButton">
+                    <span class="button-icon"><i class="fas fa-paper-plane"></i></span>
+                    <span class="button-text">Submit & Print Bill</span>
+                    <span class="button-spinner" aria-hidden="true"></span>
+                </button>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                <i class="fas fa-check-circle"></i>
+                Prescription saved and SMS sent successfully!
+            </div>
+        </form>
+
+        <!-- Bill Template -->
+        <div id="billTemplate" class="bill-container" aria-hidden="true">
+            <div class="bill-header">
+                <h2>MAI OPTICAL CENTER</h2>
+                <p>SERVING OPTICALLY SINCE 1983</p>
+                <div class="bill-contact-info">
+                    <p>JEEWON P. SHRESTHA - PROPRIETOR</p>
+                    <p>ALAKHIYA ROAD, BIRGUNJ, NEPAL</p>
+                    <p>+977-9851059968 | maiopticalcenter@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="bill-date">
+                <p>Date: <span id="billDate"></span></p>
+                <p>Bill No: <span id="billNumber"></span></p>
+            </div>
+            
+            <div class="bill-patient">
+                <h3>Patient Details</h3>
+                <div class="bill-patient-details">
+                    <div>
+                        <p><strong>Name:</strong> <span id="billPatientName"></span></p>
+                        <p><strong>Age:</strong> <span id="billPatientAge"></span></p>
+                    </div>
+                    <div>
+                        <p><strong>Phone:</strong> <span id="billPatientPhone"></span></p>
+                        <p><strong>Address:</strong> <span id="billPatientAddress"></span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bill-section">
+                <h3>Prescription Details</h3>
+                <div class="bill-patient-details">
+                    <div>
+                        <h4>Right Eye (RE)</h4>
+                        <p><strong>Sphere:</strong> <span id="billReSphere"></span></p>
+                        <p><strong>Cylinder:</strong> <span id="billReCylinder"></span></p>
+                        <p><strong>Axis:</strong> <span id="billReAxis"></span></p>
+                        <p><strong>PD:</strong> <span id="billRePd"></span></p>
+                    </div>
+                    <div>
+                        <h4>Left Eye (LE)</h4>
+                        <p><strong>Sphere:</strong> <span id="billLeSphere"></span></p>
+                        <p><strong>Cylinder:</strong> <span id="billLeCylinder"></span></p>
+                        <p><strong>Axis:</strong> <span id="billLeAxis"></span></p>
+                        <p><strong>PD:</strong> <span id="billLePd"></span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bill-section">
+                <h3>Order Details</h3>
+                <table class="bill-items">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lens Type</td>
+                            <td id="billLensType"></td>
+                        </tr>
+                        <tr>
+                            <td>Lens Quality</td>
+                            <td id="billLensQuality"></td>
+                        </tr>
+                        <tr>
+                            <td>Frame Type</td>
+                            <td id="billFrameType"></td>
+                        </tr>
+                        <tr>
+                            <td>Frame Model</td>
+                            <td id="billFrameModel"></td>
+                        </tr>
+                        <tr>
+                            <td>Anti-Reflective</td>
+                            <td id="billAntiReflective"></td>
+                        </tr>
+                        <tr>
+                            <td>UV Protection</td>
+                            <td id="billUvProtection"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bill-section">
+                <h3>Payment Details</h3>
+                <table class="bill-items">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount (NPR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Amount</td>
+                            <td id="billTotalAmount"></td>
+                        </tr>
+                        <tr>
+                            <td>Amount Paid</td>
+                            <td id="billPaidAmount"></td>
+                        </tr>
+                        <tr>
+                            <td>Amount Due</td>
+                            <td id="billDueAmount"></td>
+                        </tr>
+                        <tr>
+                            <td>Payment Method</td>
+                            <td id="billPaymentMethod"></td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Date</td>
+                            <td id="billDeliveryDate"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bill-section">
+                <h3>Notes</h3>
+                <p id="billNotes"></p>
+            </div>
+            
+            <div class="bill-footer">
+                <p>Thank you for choosing MAI OPTICAL CENTER</p>
+                <p>For any queries, please contact: +977-9851059968</p>
+            </div>
+            
+            <div class="bill-actions">
+                <button class="print-button" onclick="window.print()">Print Bill</button>
+                <button class="print-button" onclick="closeBill()">Close</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <h3>MAI OPTICAL CENTER</h3>
+                <p>SERVING OPTICALLY SINCE 1983</p>
+                <div class="contact-info">
+                    <p>ALAKHIYA ROAD, BIRGUNJ, NEPAL | +977-9851059968</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="tel:+9779851059968" aria-label="Call us"><i class="fas fa-phone"></i></a>
+                </div>
+                <p class="copyright">Made with <i class="fas fa-heart"></i> by <a href="https://msr-portfolio.vercel.app/">MSR</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form navigation
+            const pages = document.querySelectorAll('.form-page');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const progressLine = document.getElementById('progressLine');
+            let currentPage = 1;
+            const totalPages = pages.length;
+            
+            // Initialize form navigation
+            document.querySelectorAll('.next-button, .prev-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextPage = this.dataset.next;
+                    const prevPage = this.dataset.prev;
+                    
+                    if (nextPage) {
+                        if (validateCurrentPage(currentPage)) {
+                            navigateToPage(parseInt(nextPage));
+                        }
+                    } else if (prevPage) {
+                        navigateToPage(parseInt(prevPage));
+                    }
+                });
+            });
+            
+            function navigateToPage(pageNumber) {
+                // Hide all pages
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Show selected page
+                document.getElementById(`page${pageNumber}`).classList.add('active');
+                
+                // Update progress steps
+                updateProgress(pageNumber);
+                
+                // Update current page
+                currentPage = pageNumber;
+                
+                // If it's the last page, update the preview
+                if (pageNumber === 5) {
+                    updatePreview();
+                }
+                
+                // Scroll to top
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+            
+            function updateProgress(pageNumber) {
+                // Update progress indicators
+                progressSteps.forEach(step => {
+                    const stepNum = parseInt(step.dataset.step);
+                    if (stepNum <= pageNumber) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+                
+                // Update progress line
+                const progressPercentage = ((pageNumber - 1) / (totalPages - 1)) * 100;
+                progressLine.style.width = `${progressPercentage}%`;
+            }
+            
+            function validateCurrentPage(pageNumber) {
+                const currentPage = document.getElementById(`page${pageNumber}`);
+                const requiredFields = currentPage.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('invalid');
+                        isValid = false;
+                        
+                        if (!field.nextElementSibling || !field.nextElementSibling.classList.contains('error-message')) {
+                            const errorMsg = document.createElement('div');
+                            errorMsg.className = 'error-message';
+                            errorMsg.textContent = 'This field is required';
+                            field.parentNode.insertBefore(errorMsg, field.nextSibling);
+                        }
+                    } else {
+                        field.classList.remove('invalid');
+                        const errorMsg = field.nextElementSibling;
+                        if (errorMsg && errorMsg.classList.contains('error-message')) {
+                            errorMsg.remove();
+                        }
+                    }
+                });
+                
+                return isValid;
+            }
+            
+            // Payment calculations
+            function setupPaymentCalculations() {
+                const totalInput = document.getElementById('totalAmount');
+                const collectedInput = document.getElementById('collectedAmount');
+                
+                [totalInput, collectedInput].forEach(input => {
+                    input.addEventListener('input', function() {
+                        const total = parseFloat(totalInput.value) || 0;
+                        const collected = parseFloat(collectedInput.value) || 0;
+                        const remaining = Math.max(0, total - collected);
+                        
+                        document.getElementById('displayTotal').textContent = formatCurrency(total);
+                        document.getElementById('displayCollected').textContent = formatCurrency(collected);
+                        document.getElementById('displayRemaining').textContent = formatCurrency(remaining);
+                        
+                        document.getElementById('paymentDisplay').style.display = 
+                            total > 0 ? 'block' : 'none';
+                    });
+                });
+            }
+            
+            function formatCurrency(amount) {
+                return 'NPR ' + amount.toLocaleString('en-NP', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+            
+            // Update preview with form data
+            function updatePreview() {
+                document.getElementById('previewName').textContent = document.getElementById('patientName').value || '-';
+                document.getElementById('previewAge').textContent = document.getElementById('age').value || '-';
+                document.getElementById('previewPhone').textContent = document.getElementById('phone').value || '-';
+                document.getElementById('previewAddress').textContent = document.getElementById('address').value || '-';
+                
+                document.getElementById('previewReSphere').textContent = document.getElementById('reSphere').value || '-';
+                document.getElementById('previewReCylinder').textContent = document.getElementById('reCylinder').value || '-';
+                document.getElementById('previewReAxis').textContent = document.getElementById('reAxis').value || '-';
+                document.getElementById('previewRePd').textContent = document.getElementById('rePd').value || '-';
+                
+                document.getElementById('previewLeSphere').textContent = document.getElementById('leSphere').value || '-';
+                document.getElementById('previewLeCylinder').textContent = document.getElementById('leCylinder').value || '-';
+                document.getElementById('previewLeAxis').textContent = document.getElementById('leAxis').value || '-';
+                document.getElementById('previewLePd').textContent = document.getElementById('lePd').value || '-';
+                
+                document.getElementById('previewLensType').textContent = document.getElementById('lensType').value || '-';
+                document.getElementById('previewLensQuality').textContent = document.getElementById('lensQuality').value || '-';
+                document.getElementById('previewFrameType').textContent = document.getElementById('frameType').value || '-';
+                document.getElementById('previewFrameModel').textContent = document.getElementById('frameModel').value || '-';
+                document.getElementById('previewAntiReflective').textContent = document.getElementById('antiReflectiveCoating').checked ? 'Yes' : 'No';
+                document.getElementById('previewUvProtection').textContent = document.getElementById('uvProtection').checked ? 'Yes' : 'No';
+                
+                const total = parseFloat(document.getElementById('totalAmount').value) || 0;
+                const collected = parseFloat(document.getElementById('collectedAmount').value) || 0;
+                const remaining = Math.max(0, total - collected);
+                
+                document.getElementById('previewTotal').textContent = total ? formatCurrency(total) : '-';
+                document.getElementById('previewCollected').textContent = collected ? formatCurrency(collected) : '-';
+                document.getElementById('previewRemaining').textContent = remaining ? formatCurrency(remaining) : '-';
+                document.getElementById('previewPaymentMethod').textContent = document.getElementById('paymentMethod').value || '-';
+                document.getElementById('previewDeliveryDate').textContent = document.getElementById('deliveryDate').value || '-';
+            }
+            
+            // Form submission
+            document.getElementById('prescriptionForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitButton = document.getElementById('submitButton');
+                submitButton.classList.add('loading');
+                submitButton.disabled = true;
+                
+                try {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    
+                    // Generate and show bill
+                    generateBill(getFormData());
+                    
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Scroll to bill
+                    document.getElementById('billTemplate').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('There was an error submitting the form. Please try again.');
+                } finally {
+                    submitButton.classList.remove('loading');
+                    submitButton.disabled = false;
+                }
+            });
+            
+            function getFormData() {
+                return {
+                    patientName: document.getElementById('patientName').value,
+                    age: document.getElementById('age').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    reSphere: document.getElementById('reSphere').value,
+                    reCylinder: document.getElementById('reCylinder').value,
+                    reAxis: document.getElementById('reAxis').value,
+                    rePd: document.getElementById('rePd').value,
+                    leSphere: document.getElementById('leSphere').value,
+                    leCylinder: document.getElementById('leCylinder').value,
+                    leAxis: document.getElementById('leAxis').value,
+                    lePd: document.getElementById('lePd').value,
+                    lensType: document.getElementById('lensType').value,
+                    lensQuality: document.getElementById('lensQuality').value,
+                    frameType: document.getElementById('frameType').value,
+                    frameModel: document.getElementById('frameModel').value,
+                    antiReflective: document.getElementById('antiReflectiveCoating').checked,
+                    uvProtection: document.getElementById('uvProtection').checked,
+                    paymentMethod: document.getElementById('paymentMethod').value,
+                    totalAmount: document.getElementById('totalAmount').value,
+                    collectedAmount: document.getElementById('collectedAmount').value,
+                    remainingAmount: calculateRemainingAmount(),
+                    deliveryDate: document.getElementById('deliveryDate').value,
+                    notes: document.getElementById('notes').value,
+                    sendSms: document.getElementById('smsConfirmation').checked
+                };
+            }
+            
+            function calculateRemainingAmount() {
+                const total = parseFloat(document.getElementById('totalAmount').value) || 0;
+                const collected = parseFloat(document.getElementById('collectedAmount').value) || 0;
+                return Math.max(0, total - collected);
+            }
+            
+            function generateBill(formData) {
+                // Fill bill template with data
+                document.getElementById('billDate').textContent = getCurrentDate();
+                document.getElementById('billNumber').textContent = generateBillNumber();
+                
+                document.getElementById('billPatientName').textContent = formData.patientName || '-';
+                document.getElementById('billPatientAge').textContent = formData.age || '-';
+                document.getElementById('billPatientPhone').textContent = formData.phone || '-';
+                document.getElementById('billPatientAddress').textContent = formData.address || '-';
+                
+                document.getElementById('billReSphere').textContent = formData.reSphere || '-';
+                document.getElementById('billReCylinder').textContent = formData.reCylinder || '-';
+                document.getElementById('billReAxis').textContent = formData.reAxis || '-';
+                document.getElementById('billRePd').textContent = formData.rePd || '-';
+                
+                document.getElementById('billLeSphere').textContent = formData.leSphere || '-';
+                document.getElementById('billLeCylinder').textContent = formData.leCylinder || '-';
+                document.getElementById('billLeAxis').textContent = formData.leAxis || '-';
+                document.getElementById('billLePd').textContent = formData.lePd || '-';
+                
+                document.getElementById('billLensType').textContent = formData.lensType || '-';
+                document.getElementById('billLensQuality').textContent = formData.lensQuality || '-';
+                document.getElementById('billFrameType').textContent = formData.frameType || '-';
+                document.getElementById('billFrameModel').textContent = formData.frameModel || '-';
+                document.getElementById('billAntiReflective').textContent = formData.antiReflective ? 'Yes' : 'No';
+                document.getElementById('billUvProtection').textContent = formData.uvProtection ? 'Yes' : 'No';
+                
+                document.getElementById('billTotalAmount').textContent = formData.totalAmount ? formatCurrency(parseFloat(formData.totalAmount)) : 'NPR 0';
+                document.getElementById('billPaidAmount').textContent = formData.collectedAmount ? formatCurrency(parseFloat(formData.collectedAmount)) : 'NPR 0';
+                document.getElementById('billDueAmount').textContent = formData.remainingAmount ? formatCurrency(parseFloat(formData.remainingAmount)) : 'NPR 0';
+                document.getElementById('billPaymentMethod').textContent = formData.paymentMethod || '-';
+                document.getElementById('billDeliveryDate').textContent = formatDate(formData.deliveryDate);
+                
+                document.getElementById('billNotes').textContent = formData.notes || 'None';
+                
+                // Show the bill
+                document.getElementById('billTemplate').style.display = 'block';
+            }
+            
+            function generateBillNumber() {
+                const now = new Date();
+                const year = now.getFullYear().toString().slice(-2);
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const day = now.getDate().toString().padStart(2, '0');
+                const randomNum = Math.floor(1000 + Math.random() * 9000);
+                return `BILL-${year}${month}${day}-${randomNum}`;
+            }
+            
+            function getCurrentDate() {
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = (now.getMonth() + 1).toString().padStart(2, '0');
+                const day = now.getDate().toString().padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+            
+            function formatDate(dateString) {
+                if (!dateString) return '-';
+                const date = new Date(dateString);
+                return date.toISOString().split('T')[0];
+            }
+            
+            // Close bill view
+            window.closeBill = function() {
+                document.getElementById('billTemplate').style.display = 'none';
+                document.getElementById('prescriptionForm').reset();
+                document.getElementById('paymentDisplay').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'none';
+                navigateToPage(1);
+            }
+            
+            // Initialize payment calculations
+            setupPaymentCalculations();
+        });
+    </script>
+</body>
+</html>
